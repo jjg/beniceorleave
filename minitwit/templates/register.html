@@ -2,6 +2,13 @@
 {% block title %}Sign Up{% endblock %}
 {% block body %}
   <h2>Sign Up</h2>
+  <i><b>Notice!</b> this is an experimental system and all data may be lost at any time (see this as a blessing or a curse, your call).</i>
+  <p>During <b>alpha 0</b> this site does not use encryption.  The information you provide below may be intercepted by ISIS and used to order body pillows using your Amazon account if you happen to use the same email and password for everything (protip: don't do that).</p>
+  <p>Speaking of which, you don't need to provide your real email address during <b>alpha 0</b>, the system doesn't use it for anything yet (that is unless you want to change your avatar, see below).</p>
+  <p>Avatar images are generated using <a href="https://secure.gravatar.com/">Gravatar</a>.  If you'd like something other than the auto-generated image, visit <a href="https://secure.gravatar.com/">https://secure.gravatar.com/</a> to change it and eventually the new image will show up here.</p>
+  <p>There's currenty no way to reset your password, so don't forget it; or do forget it, and create a new account!  It's a free-for-all at this point so best not to get too invested.</p>
+  <p>Most of this will get addressed in the next version (<a href="https://github.com/jjg/beniceorleave/milestone/2">alpha 1</a>).  In the meantime if you find anything wrong that's not on this list, visit the <a href="https://github.com/jjg/beniceorleave/issues">bugtracker on Github</a> and create a new Issue if you want someone to look into it.</p>
+  <p>Most of all be nice and have fun.  Everything is temporary and reality is an illusion. <a href="/jjg">--jjg</a></p>
   {% if error %}<div class="error"><strong>Error:</strong> {{ error }}</div>{% endif %}
   <form action="" method="post">
     <dl>
