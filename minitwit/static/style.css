@@ -108,6 +108,7 @@ div.page ul.messages li {
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     min-height: 48px;
+    overflow:hidden;
 }
 
 div.page ul.messages p {

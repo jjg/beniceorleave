@@ -16,6 +16,7 @@ from datetime import datetime
 from flask import Flask, request, session, url_for, redirect, \
      render_template, abort, g, flash, _app_ctx_stack
 from werkzeug import check_password_hash, generate_password_hash
+import re
 
 
 # configuration
@@ -29,6 +30,15 @@ app = Flask(__name__)
 app.config.from_object(__name__)
 app.config.from_envvar('MINITWIT_SETTINGS', silent=True)
 
+def imgtag_filter(message):
+    if '.jpg' in message or '.jpeg' in message or '.gif' in message or '.png' in message:
+        url_list = re.findall(r'(https?://\S+)', message)
+        tags = ''
+        for url in url_list:
+            tags = tags + '<a href="{}"><img style="max-width:100%;" src="{}"/></a>'.format(url, url)
+        return tags 
+
+app.jinja_env.filters['imgtag'] = imgtag_filter
 
 def get_db():
     """Opens a new database connection if there is none yet for the
