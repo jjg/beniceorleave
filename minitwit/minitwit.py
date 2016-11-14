@@ -36,7 +36,9 @@ def imgtag_filter(message):
         tags = ''
         for url in url_list:
             tags = tags + '<a href="{}"><img style="max-width:100%;" src="{}"/></a>'.format(url, url)
-        return tags 
+        return tags
+    else:
+	return ''
 
 app.jinja_env.filters['imgtag'] = imgtag_filter
 
