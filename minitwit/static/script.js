@@ -13,7 +13,7 @@ function uploadFile(file){
         if(xhr.status === 200 && xhr.readyState === 4){
             var imgurResponse = JSON.parse(xhr.responseText);
             console.log(imgurResponse);
-            document.getElementById('messagetext').value = imgurResponse.data.link;
+            document.getElementById('messagetext').value = document.getElementById('messagetext').value + ' ' + imgurResponse.data.link;
             return;
         }
     }
