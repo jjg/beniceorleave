@@ -29,9 +29,10 @@
       <div class="twitbox">
         <h3>What's on your mind {{ g.user.username }}?</h3>
         <form action="{{ url_for('add_message') }}" method="post">
-          <p><input type="text" name="text" size="60"><!--
+          <p><input id="messagetext"type="text" name="text" size="60"><!--
           --><input type="submit" value="Share">
         </form>
+        <input type="file" id="input" onchange="uploadFile(this.files[0])">
       </div>
     {% endif %}
   {% endif %}
