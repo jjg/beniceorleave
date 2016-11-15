@@ -1,5 +1,8 @@
 function uploadFile(file){
 
+    document.getElementById("sharebutton").disabled = true;
+    document.getElementById('upload_status').innerHTML = 'uploading...';
+
     var fd = new FormData();
     fd.append("image", file); // Append the file
 
@@ -14,13 +17,21 @@ function uploadFile(file){
             var imgurResponse = JSON.parse(xhr.responseText);
             console.log(imgurResponse);
             document.getElementById('messagetext').value = document.getElementById('messagetext').value + ' ' + imgurResponse.data.link;
+            document.getElementById('upload_status').innerHTML= '';
+            document.getElementById("sharebutton").disabled = false;
             return;
         }
     }
     xhr.onerror = function(){
         console.log('Error:');
         console.log(xhr.error);
+        document.getElementById('upload_status').innerHTML = 'upload error';
+        document.getElementById("sharebutton").disabled = false;
+        return;
     }
 
     xhr.send(fd);
 }
+
+// sharebutton
+// upload_status
