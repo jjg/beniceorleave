@@ -17,7 +17,7 @@ from flask import Flask, request, session, url_for, redirect, \
      render_template, abort, g, flash, _app_ctx_stack
 from werkzeug import check_password_hash, generate_password_hash
 import re
-
+from flaskext.markdown import Markdown
 
 # configuration
 DATABASE = '/tmp/minitwit.db'
@@ -29,6 +29,9 @@ SECRET_KEY = 'development key'
 app = Flask(__name__)
 app.config.from_object(__name__)
 app.config.from_envvar('MINITWIT_SETTINGS', silent=True)
+
+# bind markdown filter
+Markdown(app, extensions=['fenced_code'])
 
 def imgtag_filter(message):
     if '.jpg' in message or '.jpeg' in message or '.gif' in message or '.png' in message:
