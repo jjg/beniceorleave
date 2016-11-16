@@ -126,6 +126,7 @@ div.page ul.messages li small {
 }
 
 div.page div.twitbox {
+    text-align: right;
     margin: 10px 0;
     padding: 5px;
     background: #F0FAF9;

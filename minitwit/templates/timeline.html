@@ -27,12 +27,12 @@
       </div>
     {% elif request.endpoint == 'timeline' %}
       <div class="twitbox">
-        <h3>What's on your mind {{ g.user.username }}?</h3>
+        <h3>What's cool, {{ g.user.username }}?</h3>
         <form action="{{ url_for('add_message') }}" method="post">
-          <p><input id="messagetext"type="text" name="text" size="60"><!--
-          --><input id="sharebutton" type="submit" value="Share">
+          <p><textarea id="messagetext"type="text" name="text" rows="4" cols="80" size="60"></textarea>
+          add pix: <input type="file" id="input" onchange="uploadFile(this.files[0])"><span id="upload_status"></span>
+          <input id="sharebutton" type="submit" value="Share">
         </form>
-        add pix: <input type="file" id="input" onchange="uploadFile(this.files[0])"><span id="upload_status"></span>
       </div>
     {% endif %}
   {% endif %}
