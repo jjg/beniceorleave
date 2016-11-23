@@ -38,7 +38,7 @@ sslify = SSLify(app)
 Markdown(app, extensions=['fenced_code'])
 
 def imgtag_filter(message):
-    if '.jpg' in message or '.jpeg' in message or '.gif' in message or '.png' in message:
+    if '.jpg' in message.lower() or '.jpeg' in message.lower() or '.gif' in message.lower() or '.png' in message.lower():
         url_list = re.findall(r'(https?://\S+)', message)
         tags = ''
         for url in url_list:
