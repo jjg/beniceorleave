@@ -210,6 +210,19 @@ def add_message():
         flash('Your message was recorded')
     return redirect(url_for('timeline'))
 
+@app.route('/message/<message_id>/delete', methods=['POST'])
+def delete_message(message_id):
+    """Removes an existing message"""
+    if 'user_id' not in session:
+        abort(401)
+    message = query_db('select * from message where message_id = ?', [message_id], one=True)
+    if session['user_id'] != message['author_id']:
+        abort(401)
+    db = get_db()
+    db.execute('delete from message where message_id = ?', [message_id])
+    db.commit()
+    flash('Message deleted')
+    return redirect(url_for('timeline'))
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
