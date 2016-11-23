@@ -163,6 +163,16 @@ def user_timeline(username):
             [profile_user['user_id'], PER_PAGE]), followed=followed,
             profile_user=profile_user)
 
+@app.route('/<username>/<message_id>')
+def message(username, message_id):
+    # display a single message
+    profile_user = query_db('select * from user where username = ?',
+                            [username], one=True)
+
+    return render_template('timeline.html', messages=query_db('''
+            select message.*, user.* from message, user where
+            user.user_id = message.author_id and message.message_id = ? limit 1''',
+            [message_id]), profile_user = profile_user)
 
 @app.route('/<username>/follow')
 def follow_user(username):
